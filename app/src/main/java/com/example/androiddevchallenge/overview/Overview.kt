@@ -73,15 +73,28 @@ fun OverviewCard(
             Column(
                 modifier = Modifier.weight(1f)
             ) {
-                Text(dog.name)
-                Text("\u2642")//Todo
-                Text(dog.description)
+                Row {
+                    Text(
+                        text = dog.name,
+                        style = MaterialTheme.typography.h5
+                    )
+                    val sex = when (dog.sex) {
+                        Dog.Sex.FEMALE -> "\u2640"
+                        Dog.Sex.MALE -> "\u2642"
+                    }
+                    Text(
+                        text = sex,
+                        style = MaterialTheme.typography.h5,
+                        modifier = Modifier.padding(start = 8.dp)
+                    )
+                }
+                Text(text = dog.description)
             }
-
             Image(
                 painter = painterResource(id = dog.picture),
                 contentDescription = "dog",
                 modifier = Modifier
+                    .padding(8.dp)
                     .clip(CircleShape)
             )
         }
