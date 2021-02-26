@@ -17,9 +17,16 @@ For now this is pretty simple and fulfills just the bare minimum requirements. T
 Since I am pretty new to Compose and to Navigation as well this wasn't as easy as I liked but I guess every start is hard.
 
 I would like to expand this app with some more points:
- * [ ] Add more doggos
+ * [x] Add more doggos
+ * [x] Add a toolbar  
  * [ ] Add theming with some nice colors
- * [ ] Fill the details page with additional dog informations 
+ * [ ] Fill the details page with additional dog informations
+    * Toolbar with up arrow
+    * Name in toolbar
+    * Display race and age
+ * [ ] Add race and filter option
+ * [ ] Add different layouting options (List/Grid)
+ * [ ] Implement parallax scrolling on details page
 
 ## :camera_flash: Screenshots
 <!-- You can add more screenshots here if you like -->

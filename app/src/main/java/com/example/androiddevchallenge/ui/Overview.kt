@@ -29,7 +29,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -46,15 +49,26 @@ fun Overview(
     @PreviewParameter(DogsListsProvider::class) dogs: List<Dog>,
     selectDog: (Long) -> Unit = { _ -> },
 ) {
-    LazyColumn(
-        contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        items(dogs) { dog ->
-            OverviewCard(
-                dog = dog,
-                onClick = { selectDog(dog.id) }
+    Scaffold(
+        backgroundColor = MaterialTheme.colors.primarySurface,
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text("Wuff Wuff")
+                }
             )
+        }
+    ) {
+        LazyColumn(
+            contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(dogs) { dog ->
+                OverviewCard(
+                    dog = dog,
+                    onClick = { selectDog(dog.id) }
+                )
+            }
         }
     }
 }
