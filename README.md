@@ -4,15 +4,22 @@
 <!--- You can find both of these in the url bar when you open your repository in github. -->
 ![Workflow result](https://github.com/henningBunk/android-dev-challenge-compose/workflows/Check/badge.svg)
 
-
 ## :scroll: Description
 <!--- Describe your app in one or two sentences -->
-TBD
+
+An entry to the Android Dev Challenge, Week 1.
 
 ## :bulb: Motivation and Context
 <!--- Optionally point readers to interesting parts of your submission. -->
 <!--- What are you especially proud of? -->
-TBD
+
+For now this is pretty simple and fulfills just the bare minimum requirements. Two screens which you can navigate between.
+Since I am pretty new to Compose and to Navigation as well this wasn't as easy as I liked but I guess every start is hard.
+
+I would like to expand this app with some more points:
+ * [ ] Add more doggos
+ * [ ] Add theming with some nice colors
+ * [ ] Fill the details page with additional dog informations 
 
 ## :camera_flash: Screenshots
 <!-- You can add more screenshots here if you like -->
