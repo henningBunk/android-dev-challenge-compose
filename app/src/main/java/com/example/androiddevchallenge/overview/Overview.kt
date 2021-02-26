@@ -34,15 +34,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.R
+import com.example.androiddevchallenge.Dog
+import com.example.androiddevchallenge.DogsListsProvider
 
 @Preview(widthDp = 320)
 @Composable
 fun Overview(
+    @PreviewParameter(DogsListsProvider::class) dogs: List<Dog>,
     modifier: Modifier = Modifier
 ) {
-    val dogs = listOf("Bela", "Stalone")
     LazyColumn(
         contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -55,7 +57,7 @@ fun Overview(
 
 @Composable
 fun OverviewCard(
-    dog: String,
+    dog: Dog,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -71,20 +73,16 @@ fun OverviewCard(
             Column(
                 modifier = Modifier.weight(1f)
             ) {
-                Text(
-                    dog,
-                )
-                Text("\u2642")
-                Text("He is a really good boy.")
+                Text(dog.name)
+                Text("\u2642")//Todo
+                Text(dog.description)
             }
 
             Image(
-                // painter = painterResource(id = R.drawable.dog),
-                painter = painterResource(id = R.drawable.ic_baseline_local_florist_24),
+                painter = painterResource(id = dog.picture),
                 contentDescription = "dog",
                 modifier = Modifier
                     .clip(CircleShape)
-
             )
         }
     }

@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun MyApp() {
     Surface(color = MaterialTheme.colors.background) {
-        Overview()
+        Overview(testDogs)
     }
 }
 
