@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.overview
+package com.example.androiddevchallenge.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -36,21 +37,24 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.Dog
-import com.example.androiddevchallenge.DogsListsProvider
+import com.example.androiddevchallenge.model.Dog
+import com.example.androiddevchallenge.model.DogsListsProvider
 
 @Preview(widthDp = 320)
 @Composable
 fun Overview(
     @PreviewParameter(DogsListsProvider::class) dogs: List<Dog>,
-    modifier: Modifier = Modifier
+    selectDog: (Long) -> Unit = { _ -> },
 ) {
     LazyColumn(
         contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(dogs) { dog ->
-            OverviewCard(dog)
+            OverviewCard(
+                dog = dog,
+                onClick = { selectDog(dog.id) }
+            )
         }
     }
 }
@@ -58,6 +62,7 @@ fun Overview(
 @Composable
 fun OverviewCard(
     dog: Dog,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -65,6 +70,7 @@ fun OverviewCard(
         modifier = Modifier
             .requiredHeight(128.dp)
             .fillMaxWidth()
+            .clickable(onClick = onClick)
     ) {
         Row(
             modifier = Modifier
@@ -78,12 +84,8 @@ fun OverviewCard(
                         text = dog.name,
                         style = MaterialTheme.typography.h5
                     )
-                    val sex = when (dog.sex) {
-                        Dog.Sex.FEMALE -> "\u2640"
-                        Dog.Sex.MALE -> "\u2642"
-                    }
                     Text(
-                        text = sex,
+                        text = dog.sex.displayText,
                         style = MaterialTheme.typography.h5,
                         modifier = Modifier.padding(start = 8.dp)
                     )

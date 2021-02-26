@@ -1,18 +1,13 @@
-package com.example.androiddevchallenge
+package com.example.androiddevchallenge.model
 
-import androidx.annotation.DrawableRes
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import com.example.androiddevchallenge.R
 
-data class Dog(
-    val name: String,
-    val sex: Sex,
-    val description: String,
-    @DrawableRes val picture: Int
-) {
-    enum class Sex {
-        FEMALE,
-        MALE
-    }
+object DogRepo {
+
+    fun getDog(dogId: Long): Dog = testDogs.find { it.id == dogId }!!
+
+    fun getDogs(): List<Dog> = testDogs
 }
 
 class DogsListsProvider : PreviewParameterProvider<List<Dog>> {
@@ -21,15 +16,24 @@ class DogsListsProvider : PreviewParameterProvider<List<Dog>> {
 
 val testDogs = listOf(
     Dog(
+        1,
         "Stalone",
         Dog.Sex.MALE,
         "STALONE! STALONE! WHERE ARE YOU, STALLOOONE???",
         R.drawable.dog_2
     ),
     Dog(
+        2,
+        "Suzy",
+        Dog.Sex.FEMALE,
+        "She is a really piece of work. Eats all the snacks all the time.",
+        R.drawable.dog_4
+    ),
+    Dog(
+        3,
         "Captain Wüff",
         Dog.Sex.MALE,
         "He is one of the best bois in town",
         R.drawable.dog_8
-    )
+    ),
 )
